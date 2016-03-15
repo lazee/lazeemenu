@@ -12,38 +12,47 @@
 
 <body>
     <h1>Example1</h1>
-    <div class="lz-menu lz-menu-theme-dark">
+
+    <p>
+        Demonstrating multi-level menu and how to expand/collapse all menu elements.
+    </p>
+    <div class="menu-1">
         <ul>
             <li>
-                <h3><a href="/v3/">Overview</a></h3>
+                <h3><span>Football</span></h3>
                 <ul>
-                    <li><a href="/v3/media/">Media Types</a></li>
-                    <li><a href="/v3/oauth/">OAuth</a></li>
-                    <li><a href="/v3/oauth_authorizations/">OAuth Authorizations API</a></li>
-                    <li><a href="/v3/auth/">Other Authentication Methods</a></li>
-                    <li><a href="/v3/troubleshooting/">Troubleshooting</a></li>
-                    <li><a href="/v3/versions/">Versions</a></li>
+                    <li><a href="/">Players</a></li>
+                    <li>
+                        <h3><span>Leagues</span></h3>
+                        <ul>
+                            <li><a href="/">World Cup</a></li>
+                            <li class="active"><a href="/">Copacobana Cup</a></li>
+                            <li><a href="/">The Olympics</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/">Statistics</a></li>
+                    <li><a href="/">Hooligans</a></li>
                 </ul>
             </li>
             <li>
-                <h3><span>Activity</span></h3>
+                <h3><span>Tennis</span></h3>
                 <ul>
-                    <li><a href="/v3/activity/events/">Events</a></li>
-                    <li><a href="/v3/activity/events/types/">Event Types &amp; Payloads</a></li>
-                    <li class="active"><a href="/v3/activity/feeds/">Feeds</a></li>
-                    <li><a href="/v3/activity/notifications/">Notifications</a></li>
-                    <li><a href="/v3/activity/starring/">Starring</a></li>
-                    <li><a href="/v3/activity/watching/">Watching</a></li>
+                    <li><a href="/">Serves</a></li>
+                    <li><a href="/">Player results</a></li>
+                    <li><a href="/">Leagues</a></li>
+                    <li><a href="/">Tournaments</a></li>
                 </ul>
             </li>
             <li>
-                <h3><a href="/v3/gists/">Gists</a></h3>
+                <h3><span>Ballet</span></h3>
                 <ul>
-                    <li><a href="/v3/gists/comments/">Comments</a></li>
+                    <li><a href="/">Dancers</a></li>
+                    <li><a href="/">Famous acts</a></li>
                 </ul>
             </li>
         </ul>
     </div>
+
     <a id="expandall" href="#">Expand all</a> | <a id="collapseall" href="#">Collapse all</a>
 
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
@@ -51,12 +60,12 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('.lz-menu').lazeemenu();
+            $('.menu-1').lazeemenu();
             $('#expandall').on('click', function(event) {
-                $('.lz-menu').lazeemenu('expandAll');
+                $('.menu-1').lazeemenu('expandAll');
             })
             $('#collapseall').on('click', function(event) {
-                $('.lz-menu').lazeemenu('collapseAll');
+                $('.menu-1').lazeemenu('collapseAll');
             })
 
         });

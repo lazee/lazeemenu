@@ -1,23 +1,21 @@
-// Lazee Menu custom variables
-
 $font-family: 'Helvetica Neue', arial, freesans, clean, sans-serif !default;
 $background-color: transparent !default;
+$main-color: #666 !default;
+$main-hover-color: #327fc7 !default;
+$main-link-color: #555 !default;
 $main-border: 1px solid #ddd !default;
-$active-border: 2px solid #d8d8d8 !default;
-$arrow-color: #9a9a9a !default;
+$active-border: 3px solid #d8d8d8 !default;
+$main-border-bottom: 1px solid #eee !default;
+$sub-arrow-color: #9a9a9a !default;
 $sub-hover-background-color: #f2f2f2 !default;
 $sub-hover-color: #327fc7 !default;
 $sub-border-bottom: 1px solid #eee !default;
 $sub-background-color: #f9f9f9 !default;
 $sub-link-color: #4183C4 !default;
-$main-color: #666 !default;
 $sub-color: $main-color !default;
-$main-hover-color: #327fc7 !default;
-$main-link-color: #555 !default;
-$main-border-bottom: 1px solid #eee !default;
-
+$sub-sub-arrow-color: #ccc !default;
+$sub-sub-background-color: #fff !default;
 .lz-menu {
-
     background-color: $background-color;
     position: relative;
     margin: 20px 0 0;
@@ -33,19 +31,16 @@ $main-border-bottom: 1px solid #eee !default;
     margin-bottom: 20px;
     font-size: 12px;
     border: $main-border;
-
     div {
         display: block;
         margin: 0;
         padding: 0;
     }
-
     ul {
         border: 0;
         margin: 0;
         padding: 0;
         font-size: 100%;
-
         li {
             border: 0;
             margin: 0;
@@ -54,46 +49,40 @@ $main-border-bottom: 1px solid #eee !default;
             display: list-item;
             text-align: -webkit-match-parent;
             list-style-type: none;
-
             .active > a {
                 color: #333;
                 border-left: $active-border;
                 padding-left: 29px;
             }
-
             h3 {
                 margin: 0;
                 color: $main-color;
                 border-bottom: $main-border-bottom;
-                font-size: 14px;
+                font-size: 12px;
                 position: relative;
                 display: block;
-
-                a+a, a+span {
-                    padding-left: 27px;
+                a+a,
+                a+span {
                     padding: 8px 10px;
                 }
-
                 a+span {
                     font-weight: 700;
                     cursor: pointer;
                 }
-
                 a+a {
-                    :hover {
+                     :hover {
                         text-decoration: none;
                         color: $main-hover-color;
                         background-color: transparent;
                     }
                 }
-
-                a, span {
+                a,
+                span {
                     display: block;
                     color: $main-link-color;
                     text-decoration: none;
                     font-size: 100%;
                 }
-
                 .arrow-btn {
                     width: 0;
                     height: 0;
@@ -103,27 +92,44 @@ $main-border-bottom: 1px solid #eee !default;
                     text-decoration: none;
                     border-top: 5px solid transparent;
                     border-bottom: 5px solid transparent;
-                    border-left: 8px solid $arrow-color;
+                    border-left: 8px solid $sub-arrow-color;
                     border-right: 0;
                 }
-
                 .expanded {
                     margin: 12px 8px 8px;
                     border-left: 5px solid transparent;
                     border-right: 5px solid transparent;
-                    border-top: 8px solid $arrow-color;
+                    border-top: 8px solid $sub-arrow-color;
                     border-bottom: 0;
                 }
-            } // h3
-
+            }
             ul {
-
                 li {
                     border-bottom: $sub-border-bottom;
                     font-weight: 700;
                     color: $sub-color;
                     background-color: $sub-background-color;
-
+                    h3 {
+                        a {
+                            font-weight: 700;
+                        }
+                        a+a,
+                        a+span {
+                            padding-left: 31px;
+                        }
+                        .arrow-btn {
+                            border-top: 5px solid transparent;
+                            border-bottom: 5px solid transparent;
+                            border-left: 8px solid $sub-sub-arrow-color;
+                            border-right: 0;
+                        }
+                        .expanded {
+                            border-left: 5px solid transparent;
+                            border-right: 5px solid transparent;
+                            border-top: 8px solid $sub-sub-arrow-color;
+                            border-bottom: 0;
+                        }
+                    }
                     a {
                         padding: 6px 0 6px 31px;
                         display: block;
@@ -131,25 +137,35 @@ $main-border-bottom: 1px solid #eee !default;
                         font-weight: 400;
                         color: $sub-link-color;
                     }
-
-                    :hover {
+                     :hover {
                         background-color: $sub-hover-background-color;
                         color: $sub-hover-color;
                     }
-
-                    :last-child {
+                     :last-child {
                         border-bottom: none;
                     }
-                } // li
-            } // ul
-        } // li
-
-        :last-child > h3 {
+                    ul {
+                        .active > a {
+                            padding-left: 53px;
+                        }
+                        li {
+                            border-bottom: $sub-border-bottom;
+                            font-weight: 700;
+                            color: $sub-color;
+                            background-color: $sub-sub-background-color;
+                            a {
+                                padding-left: 56px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+         :last-child > h3 {
             border-bottom: 0;
         }
-
-        :last-child > ul > li {
+         :last-child > ul > li {
             border-bottom: 0;
         }
-    } // ul
+    }
 }

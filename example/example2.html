@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LazeeMenu - Example 2</title>
+    <link rel="stylesheet" href="../dist/css/lazee-menu.css" media="screen">
+</head>
+
+<body>
+    <h1>Example 2</h1>
+    <p>
+        Demonstrating that top level elements doesn't have to be links. In this scenario you can click on the entire
+        menu row to expand the menu. Also demonstrating that you can have multiple menus on the same page.
+    </p>
+    <div class="menu-1">
+        <ul>
+            <li>
+                <h3><span>Football</span></h3>
+                <ul>
+                    <li><a href="/">Players</a></li>
+                    <li><a href="/">Leagues</a></li>
+                    <li><a href="/">Statistics</a></li>
+                    <li><a href="/">Hooligans</a></li>
+                </ul>
+            </li>
+            <li>
+                <h3><span>Tennis</span></h3>
+                <ul>
+                    <li><a href="/">Serves</a></li>
+                    <li><a href="/">Player results</a></li>
+                    <li><a href="/">Leagues</a></li>
+                    <li><a href="/">Tournaments</a></li>
+                </ul>
+            </li>
+            <li>
+                <h3><span>Ballet</span></h3>
+                <ul>
+                    <li><a href="/">Dancers</a></li>
+                    <li><a href="/">Famous acts</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <p>Another menu</a>
+        <div class="menu-2">
+            <ul>
+                <li>
+                    <h3><span>Football</span></h3>
+                    <ul>
+                        <li><a href="/">Players</a></li>
+                        <li><a href="/">Leagues</a></li>
+                        <li><a href="/">Statistics</a></li>
+                        <li><a href="/">Hooligans</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3><span>Tennis</span></h3>
+                    <ul>
+                        <li><a href="/">Serves</a></li>
+                        <li class="active"><a href="/">Player results</a></li>
+                        <li><a href="/">Leagues</a></li>
+                        <li><a href="/">Tournaments</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3><span>Ballet</span></h3>
+                    <ul>
+                        <li><a href="/">Dancers</a></li>
+                        <li><a href="/">Famous acts</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/src/lz-menu.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.menu-1').lazeemenu();
+            $('.menu-2').lazeemenu();
+        });
+    </script>
+</body>
+
+</html>

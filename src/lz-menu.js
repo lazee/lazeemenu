@@ -12,77 +12,102 @@
     Plugin.prototype = {
         init: function() {
             var self = this;
+            var activeIndex = -1;
+            var activeSubIndex = -1;
+
+            self.$el.addClass('lz-menu');
             self.$el.find('> ul > li').each(function(idx) {
                 var sub = $(this);
-                var expanded = false;
-                sub.find('> ul > li').each(function () {
+
+                // Append arrows
+                sub.find('> h3').prepend(self._arrowBtn());
+                sub.find('> ul > li > h3').prepend(self._arrowBtn());
+
+                // Add indexes and collapse all
+                sub.attr('lz-index', idx);
+                sub.find('> ul > li').each(function(subidx) {
+                    $(this).find('> h3').parent().attr('lz-index', idx + '-' + subidx);
+                    $(this).attr('style', 'display: none');
+                    $(this).find('> ul > li').each(function() {
+                        $(this).attr('style', 'display: none');
+                    });
+                });
+
+                // Find active link (only one allowed, and first selected)
+                sub.find('> ul > li').each(function(subidx) {
                     var item = $(this);
                     if (item.hasClass(self.options.activeClass)) {
-                        expanded = true;
+                        activeIndex = idx;
                     }
+                    item.find('> ul > li').each(function() {
+                        if ($(this).hasClass(self.options.activeClass)) {
+                            activeIndex = idx;
+                            activeSubIndex = subidx;
+                        }
+
+                    });
+                    // Also add click event while we are in the loop
+                    self._addClickEvents(item, idx + '-' + subidx);
                 });
-                sub.find('> h3').each(function() {
-                    $(this).prepend('<a href="#" class="arrow-btn ' + (expanded ? 'expanded' : '') + '"></a>');
-                });
-                sub.find('> ul > li').each(function() {
-                    $(this).attr('style', 'display: ' + (expanded ? 'block' : 'none') );
-                });
-                sub.find('> h3 > a.arrow-btn').each(function() {
-                    $(this).on('click', function(event) {
-                        event.stopPropagation();
-                        self._toggle($(this).parent(), 'toggle');
-                    })
-                });
-                sub.find('> h3 > span').each(function() {
-                    $(this).on('click', function(event) {
-                        event.stopPropagation();
-                        self._toggle($(this).parent(), 'toggle');
-                    })
-                });
+                self._addClickEvents(sub, idx);
+            });
+
+            if (activeIndex > -1 && activeSubIndex > -1) {
+                self._toggle(activeIndex, 'expand');
+                self._toggle(activeIndex + '-' + activeSubIndex, 'expand');
+            } else if (activeIndex > -1) {
+                self._toggle(activeIndex, 'expand');
+            }
+        },
+        _addClickEvents: function(sub, idx) {
+            var self = this;
+            sub.find('> h3 > a.arrow-btn').on('click', function(event) {
+                event.stopPropagation();
+                self._toggle(idx, 'toggle');
+            });
+            sub.find('> h3 > span').on('click', function(event) {
+                event.stopPropagation();
+                self._toggle(idx, 'toggle');
             });
         },
-        _toggle: function(sub, action) {
-            sub.find('> a.arrow-btn').each(function() {
+        _arrowBtn: function() {
+            return '<a href="#" class="arrow-btn"></a>';
+        },
+        _toggle: function(index, action) {
+            self = this;
+            self.$el.find('li[lz-index=\'' + index + '\'] > h3 > a.arrow-btn').each(function() {
                 if (action == 'toggle') {
                     if ($(this).hasClass('expanded')) {
                         $(this).removeClass('expanded');
-                        $(this).parent().parent().find('> ul > li').each(function() {
-                            $(this).attr('style', 'display: none');
-                        });
+                        $(this).parent().parent().find('> ul > li').attr('style', 'display: none');
                     } else {
                         $(this).addClass('expanded');
-                        $(this).parent().parent().find('> ul > li').each(function() {
-                            $(this).attr('style', 'display: block');
-                        });
+                        $(this).parent().parent().find('> ul > li').attr('style', 'display: block');
                     }
                 } else if (action == 'expand') {
                     if (!$(this).hasClass('expanded')) {
                         $(this).addClass('expanded');
-                        $(this).parent().parent().find('> ul > li').each(function() {
-                            $(this).attr('style', 'display: block');
-                        });
+                        $(this).parent().parent().find('> ul > li').attr('style', 'display: block');
                     }
                 } else {
                     if ($(this).hasClass('expanded')) {
                         $(this).removeClass('expanded');
-                        $(this).parent().parent().find('> ul > li').each(function() {
-                            $(this).attr('style', 'display: none');
-                        });
+                        $(this).parent().parent().find('> ul > li').attr('style', 'display: none');
                     }
                 }
             })
         },
         expandAll: function() {
             var self = this;
-            self.$el.find('> ul > li > h3 > a.arrow-btn').each(function(idx) {
-                self._toggle($(this).parent(), 'expand');
-            })
+            self.$el.find('li[lz-index]').each(function(idx) {
+                self._toggle($(this).attr('lz-index'), 'expand');
+            });
         },
         collapseAll: function() {
             var self = this;
-            self.$el.find('> ul > li > h3 > a.arrow-btn').each(function(idx) {
-                self._toggle($(this).parent(), 'collapse');
-            })
+            self.$el.find('li[lz-index]').each(function(idx) {
+                self._toggle($(this).attr('lz-index'), 'collapse');
+            });
         },
         destroy: function() {
             $.removeData(this.$el);
