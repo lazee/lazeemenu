@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>js Menu example</title>
+    <link rel="stylesheet" href="../dist/css/lazee-menu.css" media="screen">
+</head>
+
+<body>
+    <h1>Example1</h1>
+    <div class="lz-menu lz-menu-theme-dark">
+        <ul>
+            <li>
+                <h3><a href="/v3/">Overview</a></h3>
+                <ul>
+                    <li><a href="/v3/media/">Media Types</a></li>
+                    <li><a href="/v3/oauth/">OAuth</a></li>
+                    <li><a href="/v3/oauth_authorizations/">OAuth Authorizations API</a></li>
+                    <li><a href="/v3/auth/">Other Authentication Methods</a></li>
+                    <li><a href="/v3/troubleshooting/">Troubleshooting</a></li>
+                    <li><a href="/v3/versions/">Versions</a></li>
+                </ul>
+            </li>
+            <li>
+                <h3><span>Activity</span></h3>
+                <ul>
+                    <li><a href="/v3/activity/events/">Events</a></li>
+                    <li><a href="/v3/activity/events/types/">Event Types &amp; Payloads</a></li>
+                    <li class="active"><a href="/v3/activity/feeds/">Feeds</a></li>
+                    <li><a href="/v3/activity/notifications/">Notifications</a></li>
+                    <li><a href="/v3/activity/starring/">Starring</a></li>
+                    <li><a href="/v3/activity/watching/">Watching</a></li>
+                </ul>
+            </li>
+            <li>
+                <h3><a href="/v3/gists/">Gists</a></h3>
+                <ul>
+                    <li><a href="/v3/gists/comments/">Comments</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <a id="expandall" href="#">Expand all</a> | <a id="collapseall" href="#">Collapse all</a>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/src/lz-menu.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.lz-menu').lazeemenu();
+            $('#expandall').on('click', function(event) {
+                $('.lz-menu').lazeemenu('expandAll');
+            })
+            $('#collapseall').on('click', function(event) {
+                $('.lz-menu').lazeemenu('collapseAll');
+            })
+
+        });
+    </script>
+</body>
+
+</html>
