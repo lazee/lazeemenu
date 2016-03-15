@@ -1,16 +1,21 @@
 {
-  "name": "lazee-menu",
+  "name": "lazeemenu",
   "version": "0.0.1",
-  "description": "Pretty multilevel side menu",
-  "main": "./dist/css/lazee-menu.js",
+  "description": "Multi-level sidebar menu in pure Javascript and CSS",
+  "main": "./dist/lazeemenu-jquery.js",
   "dependencies": {
     "jquery": "^2.2.0"
   },
   "devDependencies": {
-    "bootstrap-sass": "^3.3.6",
+    "cool-reporter": "^0.1.51",
     "del": "^2.2.0",
     "gulp": "^3.9.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-jshint": "^2.0.0",
+    "gulp-jshint-file-reporter": "0.0.2",
     "gulp-sass": "^2.1.1",
+    "gulp-uglify": "^1.5.3",
+    "jshint": "^2.9.1",
     "run-sequence": "^1.1.5"
   },
   "author": {

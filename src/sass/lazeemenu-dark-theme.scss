@@ -1,0 +1,10 @@
+$arrow-color: red;
+$main-link-color: #fff;
+$background-color: #2e2e2e;
+$sub-background-color: #666;
+$sub-border-bottom: 1px solid lighten($sub-background-color, 20%);
+$main-border-bottom: 1px solid lighten($background-color, 20%);
+$sub-hover-background-color: lighten($sub-background-color, 40%);
+$sub-link-color: #fff;
+$sub-sub-link-color: #000;
+@import "lazeemenu";

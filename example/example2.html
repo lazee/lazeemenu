@@ -6,16 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>LazeeMenu - Example 2</title>
-    <link rel="stylesheet" href="../dist/css/lazee-menu.css" media="screen">
+    <link rel="stylesheet" href="example.css" media="screen">
+    <link rel="stylesheet" href="../dist/lazeemenu.css" media="screen">
 </head>
 
 <body>
-    <h1>Example 2</h1>
+    <h1>LazeeMenu - Example 2</h1>
     <p>
         Demonstrating that top level elements doesn't have to be links. In this scenario you can click on the entire
         menu row to expand the menu. Also demonstrating that you can have multiple menus on the same page.
     </p>
-    <div class="menu-1">
+    <div class="menu-1" style="max-width: 300px">
         <ul>
             <li>
                 <h3><span>Football</span></h3>
@@ -46,7 +47,7 @@
     </div>
 
     <p>Another menu</a>
-        <div class="menu-2">
+        <div class="menu-2" style="max-width: 400px">
             <ul>
                 <li>
                     <h3><span>Football</span></h3>
@@ -77,7 +78,7 @@
         </div>
 
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="/src/lz-menu.js"></script>
+    <script src="/dist/lazeemenu-jquery.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('.menu-1').lazeemenu();

@@ -1,5 +1,6 @@
 $font-family: 'Helvetica Neue', arial, freesans, clean, sans-serif !default;
-$background-color: transparent !default;
+$font-size: 14px;
+$background-color: white !default;
 $main-color: #666 !default;
 $main-hover-color: #327fc7 !default;
 $main-link-color: #555 !default;
@@ -12,9 +13,11 @@ $sub-hover-color: #327fc7 !default;
 $sub-border-bottom: 1px solid #eee !default;
 $sub-background-color: #f9f9f9 !default;
 $sub-link-color: #4183C4 !default;
+$sub-sub-link-color: $sub-link-color !default;
 $sub-color: $main-color !default;
 $sub-sub-arrow-color: #ccc !default;
 $sub-sub-background-color: #fff !default;
+
 .lz-menu {
     background-color: $background-color;
     position: relative;
@@ -29,7 +32,7 @@ $sub-sub-background-color: #fff !default;
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 20px;
-    font-size: 12px;
+    font-size: $font-size;
     border: $main-border;
     div {
         display: block;
@@ -40,12 +43,10 @@ $sub-sub-background-color: #fff !default;
         border: 0;
         margin: 0;
         padding: 0;
-        font-size: 100%;
         li {
             border: 0;
             margin: 0;
             padding: 0;
-            font-size: 100%;
             display: list-item;
             text-align: -webkit-match-parent;
             list-style-type: none;
@@ -58,7 +59,7 @@ $sub-sub-background-color: #fff !default;
                 margin: 0;
                 color: $main-color;
                 border-bottom: $main-border-bottom;
-                font-size: 12px;
+                font-size: $font-size;
                 position: relative;
                 display: block;
                 a+a,
@@ -81,7 +82,6 @@ $sub-sub-background-color: #fff !default;
                     display: block;
                     color: $main-link-color;
                     text-decoration: none;
-                    font-size: 100%;
                 }
                 .arrow-btn {
                     width: 0;
@@ -110,6 +110,7 @@ $sub-sub-background-color: #fff !default;
                     color: $sub-color;
                     background-color: $sub-background-color;
                     h3 {
+                    border-bottom: 0;
                         a {
                             font-weight: 700;
                         }
@@ -149,13 +150,18 @@ $sub-sub-background-color: #fff !default;
                             padding-left: 53px;
                         }
                         li {
-                            border-bottom: $sub-border-bottom;
+                            border-bottom: 0;
                             font-weight: 700;
                             color: $sub-color;
                             background-color: $sub-sub-background-color;
+
                             a {
                                 padding-left: 56px;
+                                color: $sub-sub-link-color;
                             }
+                            :last-child {
+                               border-bottom: none;
+                           }
                         }
                     }
                 }

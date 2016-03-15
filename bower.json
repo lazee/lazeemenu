@@ -1,0 +1,28 @@
+{
+    "name": "lazeemenu",
+    "description": "Multi-level sidebar menu in pure Javascript and CSS",
+    "version": "0.0.1",
+    "main": "dist/js/lazeemenu.js",
+    "authors": [
+        "Jakob Vad Nielsen"
+    ],
+    "license": "BSD",
+    "homepage": "https://github.com/lazee/lazeemenu",
+    "moduleType": [
+        "amd",
+        "globals",
+        "node"
+    ],
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "keywords": [
+        "menu",
+        "navigation",
+        "sidebar"
+    ]
+}
