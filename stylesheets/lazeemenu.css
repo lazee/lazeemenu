@@ -1,0 +1,123 @@
+.lz-menu {
+  background-color: white;
+  position: relative;
+  margin: 20px 0 0;
+  width: 100%;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1.4em;
+  font-family: "Helvetica Neue", arial, freesans, clean, sans-serif;
+  color: #666;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  font-size: 14px;
+  border: 1px solid #ddd; }
+  .lz-menu div {
+    display: block;
+    margin: 0;
+    padding: 0; }
+  .lz-menu ul {
+    border: 0;
+    margin: 0;
+    padding: 0; }
+    .lz-menu ul li {
+      border: 0;
+      margin: 0;
+      padding: 0;
+      display: list-item;
+      text-align: -webkit-match-parent;
+      list-style-type: none; }
+      .lz-menu ul li .active > a {
+        color: #333;
+        border-left: 3px solid #d8d8d8;
+        padding-left: 29px; }
+      .lz-menu ul li h3 {
+        margin: 0;
+        color: #666;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+        position: relative;
+        display: block; }
+        .lz-menu ul li h3 a + a,
+        .lz-menu ul li h3 a + span {
+          padding: 8px 10px; }
+        .lz-menu ul li h3 a + span {
+          font-weight: 700;
+          cursor: pointer; }
+        .lz-menu ul li h3 a + a :hover {
+          text-decoration: none;
+          color: #327fc7;
+          background-color: transparent; }
+        .lz-menu ul li h3 a,
+        .lz-menu ul li h3 span {
+          display: block;
+          color: #555;
+          text-decoration: none; }
+        .lz-menu ul li h3 .arrow-btn {
+          width: 0;
+          height: 0;
+          float: left;
+          padding: 0;
+          margin: 10px 9px 9px;
+          text-decoration: none;
+          border-top: 5px solid transparent;
+          border-bottom: 5px solid transparent;
+          border-left: 8px solid #9a9a9a;
+          border-right: 0; }
+        .lz-menu ul li h3 .expanded {
+          margin: 12px 8px 8px;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-top: 8px solid #9a9a9a;
+          border-bottom: 0; }
+      .lz-menu ul li ul li {
+        border-bottom: 1px solid #eee;
+        font-weight: 700;
+        color: #666;
+        background-color: #f9f9f9; }
+        .lz-menu ul li ul li h3 {
+          border-bottom: 0; }
+          .lz-menu ul li ul li h3 a {
+            font-weight: 700; }
+          .lz-menu ul li ul li h3 a + a,
+          .lz-menu ul li ul li h3 a + span {
+            padding-left: 31px; }
+          .lz-menu ul li ul li h3 .arrow-btn {
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 8px solid #ccc;
+            border-right: 0; }
+          .lz-menu ul li ul li h3 .expanded {
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 8px solid #ccc;
+            border-bottom: 0; }
+        .lz-menu ul li ul li a {
+          padding: 6px 0 6px 31px;
+          display: block;
+          text-decoration: none;
+          font-weight: 400;
+          color: #4183C4; }
+        .lz-menu ul li ul li :hover {
+          background-color: #f2f2f2;
+          color: #327fc7; }
+        .lz-menu ul li ul li :last-child {
+          border-bottom: none; }
+        .lz-menu ul li ul li ul .active > a {
+          padding-left: 53px; }
+        .lz-menu ul li ul li ul li {
+          border-bottom: 0;
+          font-weight: 700;
+          color: #666;
+          background-color: #fff; }
+          .lz-menu ul li ul li ul li a {
+            padding-left: 56px;
+            color: #4183C4; }
+          .lz-menu ul li ul li ul li :last-child {
+            border-bottom: none; }
+    .lz-menu ul :last-child > h3 {
+      border-bottom: 0; }
+    .lz-menu ul :last-child > ul > li {
+      border-bottom: 0; }
