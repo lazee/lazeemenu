@@ -8,7 +8,7 @@
 
     <title>js Menu example</title>
     <link rel="stylesheet" href="example.css" media="screen">
-    <link rel="stylesheet" href="../dist/lazeemenu.css" media="screen">
+    <link rel="stylesheet" href="../dist/package/lazeemenu.css" media="screen">
 </head>
 
 <body>
@@ -17,18 +17,16 @@
     <p>
         Demonstrating multi-level menu and how to expand/collapse all menu elements.
     </p>
-    <div class="menu-1" style="max-width: 300px">
-        <ul>
+    <div style="max-width: 300px">
+        <ul class="menu-1">
             <li>
-                <h3><span>Football</span></h3>
+                <h3><span>Documentation</span></h3>
                 <ul>
-                    <li><a href="/">Players</a></li>
-                    <li>
-                        <h3><span>Leagues</span></h3>
+                    <li><h3><span>Players</span></h3>
                         <ul>
-                            <li><a href="/">World Cup</a></li>
-                            <li class="active"><a href="/">Copacobana Cup</a></li>
-                            <li><a href="/">The Olympics</a></li>
+                            <li class="active"><a href="">Fooze</a></li>
+                            <li><a href="">Fooze</a></li>
+                            <li><a href="">Fooze</a></li>
                         </ul>
                     </li>
                     <li><a href="/">Statistics</a></li>
@@ -36,28 +34,55 @@
                 </ul>
             </li>
             <li>
-                <h3><span>Tennis</span></h3>
+                <h3><span>Demos</span></h3>
                 <ul>
-                    <li><a href="/">Serves</a></li>
-                    <li><a href="/">Player results</a></li>
-                    <li><a href="/">Leagues</a></li>
-                    <li><a href="/">Tournaments</a></li>
+                    <li><a href="/demo1.html">Demo 1</a></li>
+                    <li><a href="/demo2.html">Demo 2</a></li>
+                    <li><a href="/demo3.html">Demo 3</a></li>
+                    <li><a href="/demo4.html">Demo 4</a></li>
                 </ul>
             </li>
             <li>
-                <h3><span>Ballet</span></h3>
+                <h3><a href="">Demos2</a></h3>
                 <ul>
-                    <li><a href="/">Dancers</a></li>
-                    <li><a href="/">Famous acts</a></li>
+                    <li><a href="/demo1.html">Demo 1</a></li>
+                    <li><a href="/demo2.html">Demo 2</a></li>
+                    <li><a href="/demo3.html">Demo 3</a></li>
+                    <li><a href="/demo4.html">Demo 4</a></li>
+                    <li><a href="/demo1.html">Demo 1</a></li>
+                    <li><a href="/demo2.html">Demo 2</a></li>
+                    <li><a href="/demo3.html">Demo 3</a></li>
+                    <li><a href="/demo4.html">Demo 4</a></li>
+                    <li><a href="/demo1.html">Demo 1</a></li>
+                    <li><a href="/demo2.html">Demo 2</a></li>
+                    <li><a href="/demo3.html">Demo 3</a></li>
+                    <li><a href="/demo4.html">Demo 4</a></li>
+                    <li><a href="/demo1.html">Demo 1</a></li>
+                    <li><a href="/demo2.html">Demo 2</a></li>
+                    <li><a href="/demo3.html">Demo 3</a></li>
+                    <li><a href="/demo4.html">Demo 4</a></li>
+                    <li><a href="/demo1.html">Demo 1</a></li>
+                    <li><a href="/demo2.html">Demo 2</a></li>
+                    <li><a href="/demo3.html">Demo 3</a></li>
+                    <li><a href="/demo4.html">Demo 4</a></li>
+                    <li><a href="/demo1.html">Demo 1</a></li>
+                    <li><a href="/demo2.html">Demo 2</a></li>
+                    <li><a href="/demo3.html">Demo 3</a></li>
+                    <li><a href="/demo4.html">Demo 4</a></li>
+                    <li><a href="/demo1.html">Demo 1</a></li>
+                    <li><a href="/demo2.html">Demo 2</a></li>
+                    <li><a href="/demo3.html">Demo 3</a></li>
+                    <li><a href="/demo4.html">Demo 4</a></li>
                 </ul>
             </li>
         </ul>
+
     </div>
 
     <a id="expandall" href="#">Expand all</a> | <a id="collapseall" href="#">Collapse all</a>
 
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="/dist/lazeemenu-jquery.js"></script>
+    <script src="/dist/package/lazeemenu-jquery.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -66,10 +91,8 @@
                 $('.menu-1').lazeemenu('expandAll');
             })
             $('#collapseall').on('click', function(event) {
-                console.log('hello world', $('.menu-1').lazeemenu());
                 $('.menu-1').lazeemenu('collapseAll');
             })
-
         });
     </script>
 </body>

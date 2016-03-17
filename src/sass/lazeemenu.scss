@@ -1,177 +1,189 @@
+
+/*-- VARIABLES ---*/
+
 $font-family: 'Helvetica Neue', arial, freesans, clean, sans-serif !default;
 $font-size: 14px;
-$background-color: white !default;
-$main-color: #666 !default;
-$main-hover-color: #327fc7 !default;
-$main-link-color: #555 !default;
-$main-border: 1px solid #ddd !default;
-$active-border: 3px solid #d8d8d8 !default;
-$main-border-bottom: 1px solid #eee !default;
-$sub-arrow-color: #9a9a9a !default;
-$sub-hover-background-color: #f2f2f2 !default;
-$sub-hover-color: #327fc7 !default;
-$sub-border-bottom: 1px solid #eee !default;
-$sub-background-color: #f9f9f9 !default;
-$sub-link-color: #4183C4 !default;
-$sub-sub-link-color: $sub-link-color !default;
-$sub-color: $main-color !default;
-$sub-sub-arrow-color: #ccc !default;
-$sub-sub-background-color: #fff !default;
 
-.lz-menu {
-    background-color: $background-color;
-    position: relative;
+$border-main: 1px solid #ddd !default;
+$border-bottom-level1: 1px solid #eee !default;
+$border-bottom-level2: $border-bottom-level1 !default;
+$border-active-link: 3px solid #d8d8d8 !default;
+
+$color-level1: #666 !default;
+$color-level2: $color-level1 !default;
+$color-level3: $color-level2 !default;
+
+$background-color-level1: white !default;
+$background-color-level2: #f9f9f9 !default;
+$background-color-level3: #fff !default;
+
+$link-color-level1: #555 !default;
+$link-color-level2: #327fc7 !default;
+$link-color-level3: $link-color-level2 !default;
+
+$hover-color-level1: #327fc7 !default;
+$hover-color-level2: $hover-color-level1 !default;
+$hover-color-level3: $hover-color-level1 !default;
+
+$hover-background-color-level1: transparent;
+$hover-background-color-level2: #f2f2f2 !default;
+$hover-background-color-level3: $hover-background-color-level2 !default;
+
+$arrow-color-level1: #9a9a9a !default;
+$arrow-color-level2: #ccc !default;
+
+/*--- MIXINS ---*/
+
+@mixin lzhover($background, $foreground) {
+    text-decoration: none;
+    background-color: $background;
+    color: $foreground;
+}
+
+@mixin arrow-button($color) {
+    width: 0;
+    height: 0;
+    float: left;
+    padding: 0;
+    margin: 10px 9px 9px;
+    text-decoration: none;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid $color;
+    border-right: 0;
+}
+
+@mixin expanded($color) {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid $color;
+    border-bottom: 0;
+}
+
+/*--- STYLE ---*/
+
+ul.lz-menu {
+    padding: 0;
     margin: 20px 0 0;
     width: 100%;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: normal;
     line-height: 1.4em;
-    font-family: $font-family;
-    color: $main-color;
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 20px;
+    border: $border-main;
+
+    color: $color-level1;
+    background-color: $background-color-level1;
+    position: relative;
+
+    font-family: $font-family;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
     font-size: $font-size;
-    border: $main-border;
-    div {
+
+    a,
+    span {
         display: block;
-        margin: 0;
-        padding: 0;
+        color: $link-color-level1;
+        text-decoration: none;
     }
-    ul {
+
+    ul, li, h3 {
+      margin: 0;
+      font-size: $font-size;
+      color: $color-level1;
+    }
+
+    li {
         border: 0;
         margin: 0;
         padding: 0;
-        li {
-            border: 0;
+        display: list-item;
+        text-align: -webkit-match-parent;
+        list-style-type: none;
+        .active > a {
+            color: #333;
+            border-left: $border-active-link;
+            padding-left: 29px;
+        }
+        h3 {
             margin: 0;
+            border-bottom: $border-bottom-level1;
+            position: relative;
+            display: block;
+            a+a,
+            a+span {
+                padding: 8px 10px;
+                font-weight: 700;
+                cursor: pointer;
+            }
+            .arrow-btn {
+                @include arrow-button($arrow-color-level1);
+            }
+            .expanded {
+                margin: 12px 8px 8px;
+                @include expanded($arrow-color-level1);
+            }
+            :hover {
+                 @include lzhover($hover-background-color-level1, $hover-color-level1);
+            }
+        }
+        ul {
             padding: 0;
-            display: list-item;
-            text-align: -webkit-match-parent;
-            list-style-type: none;
-            .active > a {
-                color: #333;
-                border-left: $active-border;
-                padding-left: 29px;
-            }
-            h3 {
-                margin: 0;
-                color: $main-color;
-                border-bottom: $main-border-bottom;
-                font-size: $font-size;
-                position: relative;
-                display: block;
-                a+a,
-                a+span {
-                    padding: 8px 10px;
-                }
-                a+span {
-                    font-weight: 700;
-                    cursor: pointer;
-                }
-                a+a {
-                     :hover {
-                        text-decoration: none;
-                        color: $main-hover-color;
-                        background-color: transparent;
-                    }
-                }
-                a,
-                span {
-                    display: block;
-                    color: $main-link-color;
-                    text-decoration: none;
-                }
-                .arrow-btn {
-                    width: 0;
-                    height: 0;
-                    float: left;
-                    padding: 0;
-                    margin: 10px 9px 9px;
-                    text-decoration: none;
-                    border-top: 5px solid transparent;
-                    border-bottom: 5px solid transparent;
-                    border-left: 8px solid $sub-arrow-color;
-                    border-right: 0;
-                }
-                .expanded {
-                    margin: 12px 8px 8px;
-                    border-left: 5px solid transparent;
-                    border-right: 5px solid transparent;
-                    border-top: 8px solid $sub-arrow-color;
+            li {
+                border-bottom: $border-bottom-level2;
+                color: $color-level2;
+                background-color: $background-color-level2;
+                h3 {
                     border-bottom: 0;
+                    a+a,
+                    a+span {
+                        padding-left: 31px;
+                    }
+                    .arrow-btn {
+                        @include arrow-button($arrow-color-level2);
+                    }
+                    .expanded {
+                        @include expanded($arrow-color-level2);
+                    }
                 }
-            }
-            ul {
-                li {
-                    border-bottom: $sub-border-bottom;
-                    font-weight: 700;
-                    color: $sub-color;
-                    background-color: $sub-background-color;
-                    h3 {
-                    border-bottom: 0;
-                        a {
-                            font-weight: 700;
-                        }
-                        a+a,
-                        a+span {
-                            padding-left: 31px;
-                        }
-                        .arrow-btn {
-                            border-top: 5px solid transparent;
-                            border-bottom: 5px solid transparent;
-                            border-left: 8px solid $sub-sub-arrow-color;
-                            border-right: 0;
-                        }
-                        .expanded {
-                            border-left: 5px solid transparent;
-                            border-right: 5px solid transparent;
-                            border-top: 8px solid $sub-sub-arrow-color;
-                            border-bottom: 0;
-                        }
-                    }
-                    a {
-                        padding: 6px 0 6px 31px;
-                        display: block;
-                        text-decoration: none;
-                        font-weight: 400;
-                        color: $sub-link-color;
-                    }
-                     :hover {
-                        background-color: $sub-hover-background-color;
-                        color: $sub-hover-color;
-                    }
-                     :last-child {
-                        border-bottom: none;
-                    }
-                    ul {
-                        .active > a {
-                            padding-left: 53px;
-                        }
-                        li {
-                            border-bottom: 0;
-                            font-weight: 700;
-                            color: $sub-color;
-                            background-color: $sub-sub-background-color;
+                a {
+                    padding: 6px 0 6px 31px;
+                    font-weight: 400;
+                    color: $link-color-level2;
+                }
 
-                            a {
-                                padding-left: 56px;
-                                color: $sub-sub-link-color;
-                            }
-                            :last-child {
-                               border-bottom: none;
-                           }
+                :hover {
+                     @include lzhover($hover-background-color-level2, $hover-color-level2);
+                }
+
+                ul {
+                    .active > a {
+                        padding-left: 53px;
+                    }
+                    li {
+                        border-bottom: 0;
+                        color: $color-level3;
+                        background-color: $background-color-level3;
+                        a {
+                            padding-left: 56px;
                         }
+
+                        :hover {
+                            @include lzhover($hover-background-color-level3, $hover-color-level3);
+                       }
                     }
                 }
             }
         }
-         :last-child > h3 {
-            border-bottom: 0;
-        }
-         :last-child > ul > li {
-            border-bottom: 0;
-        }
+    }
+}
+ul.lz-menu:first-of-type > li:last-child {
+    h3.collapsed {
+        border-bottom: none;
+    }
+    :last-child {
+       border-bottom: none;
     }
 }

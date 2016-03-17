@@ -1,6 +1,12 @@
-$main-border: 0;
-$active-border: 3px solid #d8d8d8;
-$main-border-bottom: 0;
-$sub-border-bottom: 0;
-$sub-background-color: #fff;
+$border-main: 0;
+$border-active-link: 3px solid #d8d8d8;
+$border-bottom-level1: 0;
+$border-bottom-level2: 0;
+$background-color-level1: white;
+$background-color-level2: white;
+$background-color-level3: white;
+$hover-background-color-level1: transparent;
+$hover-background-color-level2: #f2f2f2;
+$hover-background-color-level3: #f2f2f2;
+
 @import "lazeemenu";
