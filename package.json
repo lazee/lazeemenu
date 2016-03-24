@@ -1,8 +1,8 @@
 {
   "name": "lazeemenu",
   "version": "0.0.1",
-  "description": "Multi-level sidebar menu in pure Javascript and CSS",
-  "main": "./dist/lazeemenu-jquery.js",
+  "homepage": "http://lazee.github.io/lazeemenu/",
+  "description": "Multi-level sidebar menu - JQuery plugin",
   "dependencies": {
     "jquery": "^2.2.0"
   },
@@ -14,12 +14,14 @@
     "gulp-bump": "^2.0.1",
     "gulp-cssmin": "^0.1.7",
     "gulp-gh-pages": "^0.5.4",
+    "gulp-github-release": "^1.1.2",
     "gulp-jshint": "^2.0.0",
     "gulp-jshint-file-reporter": "0.0.2",
     "gulp-markdown": "^1.2.0",
     "gulp-nunjucks-render": "^2.0.0",
     "gulp-sass": "^2.1.1",
     "gulp-uglify": "^1.5.3",
+    "gulp-zip": "^3.2.0",
     "highlight.js": "^9.2.0",
     "jshint": "^2.9.1",
     "nunjucks": "^2.4.1",
@@ -28,5 +30,12 @@
   "author": {
     "name": "Jakob Vad Nielsen",
     "email": "jakobvadnielsen@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lazee/lazeemenu.git"
+  },
+  "scripts": {
+    "test": "gulp"
   }
 }

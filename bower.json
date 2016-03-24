@@ -1,8 +1,7 @@
 {
     "name": "lazeemenu",
-    "description": "Multi-level sidebar menu in pure Javascript and CSS",
+    "description": "Multi-level sidebar menu - JQuery plugin",
     "version": "0.0.1",
-    "main": "dist/js/lazeemenu.js",
     "authors": [
         "Jakob Vad Nielsen"
     ],

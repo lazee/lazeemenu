@@ -12,6 +12,8 @@ var markdown = require('gulp-markdown');
 var bump = require('gulp-bump');
 var del = require('del');
 var runSequence = require('run-sequence');
+var release = require('gulp-github-release');
+var zip = require('gulp-zip');
 
 gulp.task('clean', function() {
     return del(['dist']);
@@ -24,22 +26,23 @@ gulp.task('deepclean', function() {
 gulp.task('sass', function() {
     return gulp.src('./src/sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./dist/package'));
+        .pipe(gulp.dest('./dist/package/lazeemenu'));
 });
 
 gulp.task('minify-css', function() {
-    gulp.src('./dist/package/*.css')
+    gulp.src('./dist/package/lazeemenu/*.css')
         .pipe(cssmin())
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('./dist/package'));
+        .pipe(gulp.dest('./dist/package/lazeemenu'));
 });
 
 gulp.task('copy', function() {
-    gulp.src(['./LICENSE']).pipe(gulp.dest('./dist/package'));
-    gulp.src(['./README.md']).pipe(gulp.dest('./dist/package'));
-    gulp.src(['./src/*.js']).pipe(gulp.dest('./dist/package'));
+    gulp.src(['./LICENSE']).pipe(gulp.dest('./dist/package/lazeemenu'));
+    gulp.src(['./README.md']).pipe(gulp.dest('./dist/package/lazeemenu'));
+    gulp.src(['./package.json']).pipe(gulp.dest('./dist/package/lazeemenu'));
+    gulp.src(['./src/*.js']).pipe(gulp.dest('./dist/package/lazeemenu'));
 });
 
 gulp.task('compress', function() {
@@ -48,7 +51,7 @@ gulp.task('compress', function() {
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('./dist/package'));
+        .pipe(gulp.dest('./dist/package/lazeemenu'));
 });
 
 gulp.task('lint', function() {
@@ -64,9 +67,9 @@ gulp.task('sass:watch', function() {
 gulp.task('pages', function() {
     gulp.src(['./site/stylesheets/*.css']).pipe(gulp.dest('./dist/pages/stylesheets'));
     gulp.src(['./site/javascripts/*.js']).pipe(gulp.dest('./dist/pages/javascripts'));
-    gulp.src(['./dist/package/*.css']).pipe(gulp.dest('./dist/pages/stylesheets'));
+    gulp.src(['./dist/package/lazeemenu/*.css']).pipe(gulp.dest('./dist/pages/stylesheets'));
     gulp.src(['./site/images/**']).pipe(gulp.dest('./dist/pages/images'));
-    gulp.src(['./dist/package/*.js']).pipe(gulp.dest('./dist/pages/javascripts'));
+    gulp.src(['./dist/package/lazeemenu/*.js']).pipe(gulp.dest('./dist/pages/javascripts'));
     gulp.src(['./site/bower_components/highlightjs/**']).pipe(gulp.dest('./dist/pages/javascripts/highlight.js'));
     gulp.src(['./node_modules/jquery/dist/jquery.min.js']).pipe(gulp.dest('./dist/pages/javascripts'));
     gulp.src(['./node_modules/bootstrap/dist/js/bootstrap.min.js']).pipe(gulp.dest('./dist/pages/javascripts'));
@@ -94,6 +97,21 @@ gulp.task('bump', function(){
   gulp.src(['./bower.json', './package.json'])
   .pipe(bump({type:'patch'}))
   .pipe(gulp.dest('./'));
+});
+
+gulp.task('release', function() {
+  gulp.src('./dist/lazeemenu.zip')
+    .pipe(release({
+      draft: false,
+      prerelease: false,
+      manifest: require('./package.json')
+    }));
+});
+
+gulp.task('zip', function() {
+    return gulp.src('./dist/package/**')
+        .pipe(zip('lazeemenu.zip'))
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('default', function(callback) {
