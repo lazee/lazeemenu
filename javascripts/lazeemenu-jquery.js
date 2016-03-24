@@ -16,11 +16,15 @@
         var activeSubIndex = -1;
 
         self.$el.addClass('lz-menu');
-        self.$el.find('> ul > li').each(function(idx) {
+        self.$el.find('> li').each(function(idx) {
+            console.log('foo', $(this));
             var sub = $(this);
 
             // Append arrows
-            sub.find('> h3').prepend(self._arrowBtn());
+            sub.find('> h3').each(function() {
+                $(this).prepend(self._arrowBtn());
+                $(this).addClass('collapsed');
+            });
             sub.find('> ul > li > h3').prepend(self._arrowBtn());
 
             // Add indexes and collapse all
@@ -52,11 +56,17 @@
             self._addClickEvents(sub, idx);
         });
 
-        if (activeIndex > -1 && activeSubIndex > -1) {
-            self._toggle(activeIndex, 'expand');
-            self._toggle(activeIndex + '-' + activeSubIndex, 'expand');
-        } else if (activeIndex > -1) {
-            self._toggle(activeIndex, 'expand');
+        if (self.options.initialState === 'expand') {
+            self.expandAll();
+        } else if (self.options.initialState === 'collapse') {
+            // Already collapsed
+        } else {
+            if (activeIndex > -1 && activeSubIndex > -1) {
+                self._toggle(activeIndex, 'expand');
+                self._toggle(activeIndex + '-' + activeSubIndex, 'expand');
+            } else if (activeIndex > -1) {
+                self._toggle(activeIndex, 'expand');
+            }
         }
     };
 
@@ -64,10 +74,12 @@
         var self = this;
         sub.find('> h3 > a.arrow-btn').on('click', function(event) {
             event.stopPropagation();
+            event.preventDefault();
             self._toggle(idx, 'toggle');
         });
         sub.find('> h3 > span').on('click', function(event) {
             event.stopPropagation();
+            event.preventDefault();
             self._toggle(idx, 'toggle');
         });
     };
@@ -81,20 +93,42 @@
         self.$el.find('li[data-lz-index=\'' + index + '\'] > h3 > a.arrow-btn').each(function() {
             if (action === 'toggle') {
                 if ($(this).hasClass('expanded')) {
+                    $(this).parent().removeClass('expanded');
+                    $(this).parent().addClass('collapsed');
                     $(this).removeClass('expanded');
-                    $(this).parent().parent().find('> ul > li').attr('style', 'display: none');
+                    $(this).addClass('collapsed');
+                    $(this).parent().parent().find('> ul > li').each(function() {
+                        var elem = $(this);
+                        elem.slideUp(100, function() {
+                            elem.attr('style', 'display: none');
+                        });
+                    });
                 } else {
+                    $(this).parent().removeClass('collapsed');
+                    $(this).parent().addClass('expanded');
+                    $(this).removeClass('collapsed');
                     $(this).addClass('expanded');
-                    $(this).parent().parent().find('> ul > li').attr('style', 'display: block');
+                    $(this).parent().parent().find('> ul > li').each(function() {
+                        var elem = $(this);
+                        elem.slideDown(100, function() {
+                            elem.attr('style', 'display: block');
+                        });
+                    });
                 }
             } else if (action === 'expand') {
                 if (!$(this).hasClass('expanded')) {
+                    $(this).parent().addClass('expanded');
+                    $(this).parent().removeClass('collapsed');
                     $(this).addClass('expanded');
+                    $(this).removeClass('collapsed');
                     $(this).parent().parent().find('> ul > li').attr('style', 'display: block');
                 }
             } else {
                 if ($(this).hasClass('expanded')) {
+                    $(this).parent().removeClass('expanded');
+                    $(this).parent().addClass('collapsed');
                     $(this).removeClass('expanded');
+                    $(this).addClass('collapsed');
                     $(this).parent().parent().find('> ul > li').attr('style', 'display: none');
                 }
             }
@@ -143,7 +177,8 @@
     };
 
     $.fn.lazeemenu.defaults = {
-        activeClass: 'active'
+        activeClass: 'active',
+        initialState: 'default'
     };
 
 })(jQuery);

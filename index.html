@@ -1,71 +1,259 @@
-<!-- layout.nunjucks -->
-<!doctype html>
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>LazeeMenu by lazee</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LazeeMenu</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <link rel="stylesheet" href="stylesheets/lazeemenu.css">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
+    <!-- Bootstrap -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/styles.css" rel="stylesheet">
+    <link href="stylesheets/lazeemenu.css" rel="stylesheet">
+    <link href="javascripts/highlight.js/styles/default.css" rel="stylesheet">
+    <link href="javascripts/highlight.js/styles/vs.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="bs-docs-header" id="content" tabindex="-1">
+    <div class="container">
         <h1>LazeeMenu</h1>
-        <p>Three-level sidebar menu in pure CSS and Javascript</p>
+        <p>Multi-level sidebar menu - JQuery plugin</p>
+        <img src="images/demo.gif" />
+    </div>
+</div>
 
-        <div class="menu-1">
-    <ul>
-        <li>
-            <h3><span>Documentation</span></h3>
-            <ul>
-                <li><a href="/">Players</a></li>
-                <li><a href="/">Statistics</a></li>
-                <li><a href="/">Hooligans</a></li>
-            </ul>
-        </li>
-        <li>
-            <h3><span>Demos</span></h3>
-            <ul>
-                <li><a href="/">Serves</a></li>
-                <li><a href="/">Player results</a></li>
-                <li><a href="/">Leagues</a></li>
-                <li><a href="/">Tournaments</a></li>
-            </ul>
-        </li>
-    </ul>
+<div class="container bs-docs-container">
+    <div class="col-md-11">
+
+        <h1 class="page-header">Introduction</h1>
+        <p>
+            LazeeMenu is a JQuery plugin that turns a nested unordered list of links into a vertical multi-level
+            navigation menu. It is visually inspired by the similar menu used by Github on its reference pages, but
+            with support for an additional level. It support both links and standard text in the expandable menu items.
+        </p>
+
+        <h2 class="page-header">Usage and Instructions</h2>
+        <p>
+            Please read the <a href="https://github.com/lazee/lazeemenu/blob/master/README.md">README</a> file in the
+            GitHib repo for instructions on how to use and contribute.
+        </p>
+
+        <h2 class="page-header">Demos</h2>
+
+        <h3>Default style without links on expandable headers</h3>
+        <p>In this example we haven't added any links on the expandable items. This allows you to click on the entire
+        item in order to expand it.</p>
+
+        
+        
+        
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a data-toggle="tab" role="tab" href="##alllinksdemo2">View</a></li>
+    <li role="presentation"><a data-toggle="tab" role="tab" href="##alllinkshtmldemo2">HTML</a></li>
+    <li role="presentation"><a data-toggle="tab" role="tab" href="##alllinksjsdemo2">JS</a></li>
+</ul>
+
+<div class="tab-content">
+    <div role="tabpanel" id="alllinksdemo2" class="tab-pane fade in active">
+        <div style="max-width: 300px; margin: auto">
+            <ul id="menu-2">
+    <li>
+        <h3><span>Online Newspapers</span></h3>
+        <ul>
+            <li class="active"><a href="http://www.cnn.com">CNN</a></li>
+            <li><a href="http://www.bbc.co.uk">BBC</a></li>
+            <li><a href="http://www.nrk.no">NRK</a></li>
+        </ul>
+    </li>
+    <li>
+        <h3><span>Funny sites</span></h3>
+        <ul>
+            <li><a href="http://www.google.com">Google</a></li>
+            <li><a href="http://www.bing.com">Bing</a></li>
+            <li><a href="http://www.yahoo.com">Yahoo</a></li>
+        </ul>
+    </li>
+    <li>
+        <h3><span>Search Engines</span></h3>
+        <ul>
+            <li><a href="http://www.google.com">Google</a></li>
+            <li><a href="http://www.bing.com">Bing</a></li>
+            <li><a href="http://www.yahoo.com">Yahoo</a></li>
+        </ul>
+    </li>
+</ul>
+
+        </div>
+    </div>
+    <div role="tabpanel" id="alllinkshtmldemo2" class="tab-pane fade">
+
+        <pre><code class="html">&lt;ul id=&quot;menu-2&quot;&gt;
+    &lt;li&gt;
+        &lt;h3&gt;&lt;span&gt;Online Newspapers&lt;/span&gt;&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;http://www.cnn.com&quot;&gt;CNN&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.bbc.co.uk&quot;&gt;BBC&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.nrk.no&quot;&gt;NRK&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;h3&gt;&lt;span&gt;Funny sites&lt;/span&gt;&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.bing.com&quot;&gt;Bing&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.yahoo.com&quot;&gt;Yahoo&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;h3&gt;&lt;span&gt;Search Engines&lt;/span&gt;&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.bing.com&quot;&gt;Bing&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.yahoo.com&quot;&gt;Yahoo&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+    </div>
+    <div role="tabpanel" id="alllinksjsdemo2" class="tab-pane fade">
+
+        <pre><code class="html">&lt;script type=&quot;text/javascript&quot;&gt;
+    $(document).ready(function() {
+        $(&#39;#menu-2&#39;).lazeemenu();
+    });
+&lt;/script&gt;
+</code></pre>
+    </div>
 </div>
 
 
-        <ul class="menu">
-          <li><a href="https://github.com/lazee/lazeemenu/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/lazee/lazeemenu/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/lazee/lazeemenu">View On <strong>GitHub</strong></a></li>
+        <h3>GitHub style with linked first level headers</h3>
+        <p>In this example all the expandable headers are also links in themselves. In order to expand the item you
+        have to click on the arrow beside the link. Clicking elsewhere inside the expandable item will take you to
+        the link source.</p>
+        
+        
+        
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a data-toggle="tab" role="tab" href="##alllinksdemo1">View</a></li>
+    <li role="presentation"><a data-toggle="tab" role="tab" href="##alllinkshtmldemo1">HTML</a></li>
+    <li role="presentation"><a data-toggle="tab" role="tab" href="##alllinksjsdemo1">JS</a></li>
+</ul>
+
+<div class="tab-content">
+    <div role="tabpanel" id="alllinksdemo1" class="tab-pane fade in active">
+        <div style="max-width: 300px; margin: auto">
+            <ul id="menu-1">
+    <li>
+        <h3><a href="/v3/">Online Newspapers</a></h3>
+        <ul>
+            <li class="active"><a href="http://www.cnn.com">CNN</a></li>
+            <li><a href="http://www.bbc.co.uk">BBC</a></li>
+            <li><a href="http://www.nrk.no">NRK</a></li>
         </ul>
-      </header>
-      <section>
-          
-<h1>This is the index page</h1>
+    </li>
+    <li>
+        <h3><a href="/v3/activity/">Funny sites</a></h3>
+        <ul>
+            <li><a href="http://www.google.com">Google</a></li>
+            <li><a href="http://www.bing.com">Bing</a></li>
+            <li><a href="http://www.yahoo.com">Yahoo</a></li>
+        </ul>
+    </li>
+    <li>
+        <h3><a href="/v3/gists/">Search Engines</a></h3>
+        <ul>
+            <li><a href="http://www.google.com">Google</a></li>
+            <li><a href="http://www.bing.com">Bing</a></li>
+            <li><a href="http://www.yahoo.com">Yahoo</a></li>
+        </ul>
+    </li>
+</ul>
 
-      </section>
-      <footer>
-
-      </footer>
+        </div>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    <script src="javascripts/jquery.min.js"></script>
-    <script src="javascripts/lazeemenu-jquery.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.menu-1').lazeemenu();
-        });
-    </script>
+    <div role="tabpanel" id="alllinkshtmldemo1" class="tab-pane fade">
 
-  </body>
+        <pre><code class="html">&lt;ul id=&quot;menu-1&quot;&gt;
+    &lt;li&gt;
+        &lt;h3&gt;&lt;a href=&quot;/v3/&quot;&gt;Online Newspapers&lt;/a&gt;&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;http://www.cnn.com&quot;&gt;CNN&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.bbc.co.uk&quot;&gt;BBC&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.nrk.no&quot;&gt;NRK&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;h3&gt;&lt;a href=&quot;/v3/activity/&quot;&gt;Funny sites&lt;/a&gt;&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.bing.com&quot;&gt;Bing&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.yahoo.com&quot;&gt;Yahoo&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;h3&gt;&lt;a href=&quot;/v3/gists/&quot;&gt;Search Engines&lt;/a&gt;&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.bing.com&quot;&gt;Bing&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;http://www.yahoo.com&quot;&gt;Yahoo&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+    </div>
+    <div role="tabpanel" id="alllinksjsdemo1" class="tab-pane fade">
+
+        <pre><code class="html">&lt;script type=&quot;text/javascript&quot;&gt;
+    $(document).ready(function() {
+        $(&#39;#menu-1&#39;).lazeemenu();
+    });
+&lt;/script&gt;
+</code></pre>
+    </div>
+</div>
+
+
+
+
+        <h3>Contribute</h3>
+        <p><p>Here it goes: I sped. I followed too closely. I ran a stop sign. I almost hit a Chevy. I sped some more. I failed to yield at a crosswalk. I changed lanes at an intersection. I changed lanes without signaling while running a red light and SPEEDING!</p>
+<p>Here it goes: I sped. I followed too closely. I ran a stop sign. I almost hit a Chevy. I sped some more. I failed to yield at a crosswalk. I changed lanes at an intersection. I changed lanes without signaling while running a red light and SPEEDING!</p>
+<p>That's what it's all about right? That's what it's always been about! Gifts, gifts, gifts, gifts, gifts, gifts! Do you know what happens to your gifts? They all come to me...in your garbage. Do you see what I'm saying here? IN YOUR GARBAGE! I could hang myself with all the bad Christmas neckties I found at the dump! And the avarice... The avarice never ends!"I want golf clubs!" "I want diamonds!" "I want a pony so I can ride it twice, get bored, and send it away to make glue!" Look, I don't wanna make waves here, but this WHOLE Christmas season is STUPID! STUPID! STUPID! There is however, one teeny, tiny, Christmas tradition that I find quite meaningful Mistletoe. SO PUCKER UP AND KISS IT, WHOVILLE!</p>
+<p>All that I ask is that you do every little thing that pops into my head, while I enjoy the enormous fortune your parents left behind.</p>
+<p>Nothing! Because if I take it to small claims court, it will just drain eight hours out of my life and you probably won't show up and even if I got the judgment you'd just stiff me anyway; so what I am going to do is piss and moan like an impotent jerk, and then bend over and take it up the tailpipe!</p></p>
+
+    </div>
+</div>
+
+<script src="javascripts/jquery.min.js"></script>
+<script src="javascripts/bootstrap.min.js"></script>
+<script src="javascripts/lazeemenu-jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#menu-1').lazeemenu();
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#menu-2').lazeemenu();
+    });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.nav-tabs > li > a').click(function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $(this).tab('show');
+    })
+});
+</script>
+
+<script src="javascripts/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
 </html>
