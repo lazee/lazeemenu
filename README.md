@@ -1,7 +1,8 @@
 # LazeeMenu
 
-LazeeMenu is a Javascript plugin that turns a nested unordered list of links into a vertical multi-level
-navigation menu. It is heavily inspired by the similar menu used by Github on its reference pages, but with support for more levels. It also support not having links on the expandable menu items, making it very flexible. At the moment LazeeMenu is implemented as a JQuery plugin, but a pure Javascript version will be released soon.
+LazeeMenu is a JQuery plugin that turns a nested unordered list of links into a vertical multi-level navigation menu. It is visually inspired by the similar menu used by Github on its reference pages, but with support for an additional level. It support both links and standard text in the expandable menu items.
+
+[Homepage - Demo](http://lazee.github.io/lazeemenu/) | [Download](https://github.com/lazee/lazeemenu/releases)
 
 ## Getting started
 
@@ -24,8 +25,7 @@ Download the plugin, unzip it and copy the files to your project folder. Then in
 Sample menu and how to activate:
 
 ```HTML
-<ul class="menu-1">
-    <li>
+<ul id="menu-1">
     <li>
         <h3><span>Tennis</span></h3>
         <ul>
@@ -45,7 +45,7 @@ Sample menu and how to activate:
 </ul>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.menu-1').lazeemenu();
+        $('#menu-1').lazeemenu();
     });
 </script>
 ```

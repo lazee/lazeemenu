@@ -74,10 +74,12 @@
         var self = this;
         sub.find('> h3 > a.arrow-btn').on('click', function(event) {
             event.stopPropagation();
+            event.preventDefault();
             self._toggle(idx, 'toggle');
         });
         sub.find('> h3 > span').on('click', function(event) {
             event.stopPropagation();
+            event.preventDefault();
             self._toggle(idx, 'toggle');
         });
     };

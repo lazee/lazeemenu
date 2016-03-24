@@ -1,0 +1,95 @@
+<!-- index.html -->
+{% extends "layout.html" %}
+{% macro demo(name, htmlsource, jssource) %}
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a data-toggle="tab" role="tab" href="##alllinks{{ name }}">View</a></li>
+    <li role="presentation"><a data-toggle="tab" role="tab" href="##alllinkshtml{{ name }}">HTML</a></li>
+    <li role="presentation"><a data-toggle="tab" role="tab" href="##alllinksjs{{ name }}">JS</a></li>
+</ul>
+
+<div class="tab-content">
+    <div role="tabpanel" id="alllinks{{ name }}" class="tab-pane fade in active">
+        <div style="max-width: 300px; margin: auto">
+            {% include "partials/" + name + ".html" %}
+        </div>
+    </div>
+    <div role="tabpanel" id="alllinkshtml{{ name }}" class="tab-pane fade">
+
+        <pre><code class="html">{{ htmlsource | escape }}</code></pre>
+    </div>
+    <div role="tabpanel" id="alllinksjs{{ name }}" class="tab-pane fade">
+
+        <pre><code class="html">{{ sourcjs | escape }}</code></pre>
+    </div>
+</div>
+{% endmacro %}
+{% block content %}
+<div class="bs-docs-header" id="content" tabindex="-1">
+    <div class="container">
+        <h1>LazeeMenu</h1>
+        <p>Multi-level sidebar menu - JQuery plugin</p>
+        <img src="images/demo.gif" />
+    </div>
+</div>
+
+<div class="container bs-docs-container">
+    <div class="col-md-11">
+
+        <h1 class="page-header">Introduction</h1>
+        <p>
+            LazeeMenu is a JQuery plugin that turns a nested unordered list of links into a vertical multi-level
+            navigation menu. It is visually inspired by the similar menu used by Github on its reference pages, but
+            with support for an additional level. It support both links and standard text in the expandable menu items.
+        </p>
+
+        <h2 class="page-header">Usage and Instructions</h2>
+        <p>
+            Please read the <a href="https://github.com/lazee/lazeemenu/blob/master/README.md">README</a> file in the
+            GitHib repo for instructions on how to use and contribute.
+        </p>
+
+        <h2 class="page-header">Demos</h2>
+
+        <h3>Default style without links on expandable headers</h3>
+        <p>In this example we haven't added any links on the expandable items. This allows you to click on the entire
+        item in order to expand it.</p>
+
+        {% set sourc %}{% include "partials/demo2.html" %}{% endset %}
+        {% set sourcjs %}{% include "partials/demo2.js.html" %}{% endset %}
+        {{ demo('demo2', sourc, sourcjs) }}
+
+        <h3>GitHub style with linked first level headers</h3>
+        <p>In this example all the expandable headers are also links in themselves. In order to expand the item you
+        have to click on the arrow beside the link. Clicking elsewhere inside the expandable item will take you to
+        the link source.</p>
+        {% set sourc %}{% include "partials/demo1.html" %}{% endset %}
+        {% set sourcjs %}{% include "partials/demo1.js.html" %}{% endset %}
+        {{ demo('demo1', sourc, sourcjs) }}
+
+
+
+        <h3>Contribute</h3>
+        <p><p>Here it goes: I sped. I followed too closely. I ran a stop sign. I almost hit a Chevy. I sped some more. I failed to yield at a crosswalk. I changed lanes at an intersection. I changed lanes without signaling while running a red light and SPEEDING!</p>
+<p>Here it goes: I sped. I followed too closely. I ran a stop sign. I almost hit a Chevy. I sped some more. I failed to yield at a crosswalk. I changed lanes at an intersection. I changed lanes without signaling while running a red light and SPEEDING!</p>
+<p>That's what it's all about right? That's what it's always been about! Gifts, gifts, gifts, gifts, gifts, gifts! Do you know what happens to your gifts? They all come to me...in your garbage. Do you see what I'm saying here? IN YOUR GARBAGE! I could hang myself with all the bad Christmas neckties I found at the dump! And the avarice... The avarice never ends!"I want golf clubs!" "I want diamonds!" "I want a pony so I can ride it twice, get bored, and send it away to make glue!" Look, I don't wanna make waves here, but this WHOLE Christmas season is STUPID! STUPID! STUPID! There is however, one teeny, tiny, Christmas tradition that I find quite meaningful Mistletoe. SO PUCKER UP AND KISS IT, WHOVILLE!</p>
+<p>All that I ask is that you do every little thing that pops into my head, while I enjoy the enormous fortune your parents left behind.</p>
+<p>Nothing! Because if I take it to small claims court, it will just drain eight hours out of my life and you probably won't show up and even if I got the judgment you'd just stiff me anyway; so what I am going to do is piss and moan like an impotent jerk, and then bend over and take it up the tailpipe!</p></p>
+
+    </div>
+</div>
+
+<script src="javascripts/jquery.min.js"></script>
+<script src="javascripts/bootstrap.min.js"></script>
+<script src="javascripts/lazeemenu-jquery.js"></script>
+{% include "partials/demo1.js.html" %}
+{% include "partials/demo2.js.html" %}
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.nav-tabs > li > a').click(function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $(this).tab('show');
+    })
+});
+</script>
+{% endblock %}

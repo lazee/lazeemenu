@@ -65,8 +65,12 @@ gulp.task('pages', function() {
     gulp.src(['./site/stylesheets/*.css']).pipe(gulp.dest('./dist/pages/stylesheets'));
     gulp.src(['./site/javascripts/*.js']).pipe(gulp.dest('./dist/pages/javascripts'));
     gulp.src(['./dist/package/*.css']).pipe(gulp.dest('./dist/pages/stylesheets'));
+    gulp.src(['./site/images/**']).pipe(gulp.dest('./dist/pages/images'));
     gulp.src(['./dist/package/*.js']).pipe(gulp.dest('./dist/pages/javascripts'));
+    gulp.src(['./site/bower_components/highlightjs/**']).pipe(gulp.dest('./dist/pages/javascripts/highlight.js'));
     gulp.src(['./node_modules/jquery/dist/jquery.min.js']).pipe(gulp.dest('./dist/pages/javascripts'));
+    gulp.src(['./node_modules/bootstrap/dist/js/bootstrap.min.js']).pipe(gulp.dest('./dist/pages/javascripts'));
+    gulp.src(['./node_modules/bootstrap/dist/css/bootstrap.min.css']).pipe(gulp.dest('./dist/pages/stylesheets'));
     return gulp.src('site/pages/*.html')
         .pipe(nunjucksRender({
             path: ['site/templates/', 'dist/md/']
