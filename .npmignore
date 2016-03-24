@@ -1,0 +1,10 @@
+.git
+.gitignore
+.npmignore
+.jshintrc
+.package
+.publish
+.sitedist
+node_modules
+npm-debug.log
+site

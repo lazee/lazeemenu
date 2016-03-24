@@ -16,33 +16,34 @@ var release = require('gulp-github-release');
 var zip = require('gulp-zip');
 
 gulp.task('clean', function() {
-    return del(['dist']);
+    return del(['dist', '.sitedist', '.package']);
 });
 
 gulp.task('deepclean', function() {
-    return del(['dist', 'node_modules']);
+    return del(['dist', '.sitedist', '.package', 'node_modules']);
 });
 
 gulp.task('sass', function() {
     return gulp.src('./src/sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./dist/package/lazeemenu'));
+        .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('minify-css', function() {
-    gulp.src('./dist/package/lazeemenu/*.css')
+    gulp.src('./.package/lazeemenu/*.css')
         .pipe(cssmin())
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('./dist/package/lazeemenu'));
+        .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('copy', function() {
-    gulp.src(['./LICENSE']).pipe(gulp.dest('./dist/package/lazeemenu'));
-    gulp.src(['./README.md']).pipe(gulp.dest('./dist/package/lazeemenu'));
-    gulp.src(['./package.json']).pipe(gulp.dest('./dist/package/lazeemenu'));
-    gulp.src(['./src/*.js']).pipe(gulp.dest('./dist/package/lazeemenu'));
+gulp.task('package', function() {
+    gulp.src(['./LICENSE']).pipe(gulp.dest('./.package/lazeemenu'));
+    gulp.src(['./README.md']).pipe(gulp.dest('./.package/lazeemenu'));
+    gulp.src(['./package.json']).pipe(gulp.dest('./.package/lazeemenu'));
+    gulp.src(['./dist/*.js']).pipe(gulp.dest('./.package/lazeemenu'));
+    gulp.src(['./dist/*.css']).pipe(gulp.dest('./.package/lazeemenu'));
 });
 
 gulp.task('compress', function() {
@@ -51,7 +52,7 @@ gulp.task('compress', function() {
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('./dist/package/lazeemenu'));
+        .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('lint', function() {
@@ -65,33 +66,33 @@ gulp.task('sass:watch', function() {
 });
 
 gulp.task('pages', function() {
-    gulp.src(['./site/stylesheets/*.css']).pipe(gulp.dest('./dist/pages/stylesheets'));
-    gulp.src(['./site/javascripts/*.js']).pipe(gulp.dest('./dist/pages/javascripts'));
-    gulp.src(['./dist/package/lazeemenu/*.css']).pipe(gulp.dest('./dist/pages/stylesheets'));
-    gulp.src(['./site/images/**']).pipe(gulp.dest('./dist/pages/images'));
-    gulp.src(['./dist/package/lazeemenu/*.js']).pipe(gulp.dest('./dist/pages/javascripts'));
-    gulp.src(['./site/bower_components/highlightjs/**']).pipe(gulp.dest('./dist/pages/javascripts/highlight.js'));
-    gulp.src(['./node_modules/jquery/dist/jquery.min.js']).pipe(gulp.dest('./dist/pages/javascripts'));
-    gulp.src(['./node_modules/bootstrap/dist/js/bootstrap.min.js']).pipe(gulp.dest('./dist/pages/javascripts'));
-    gulp.src(['./node_modules/bootstrap/dist/css/bootstrap.min.css']).pipe(gulp.dest('./dist/pages/stylesheets'));
+    gulp.src(['./site/stylesheets/*.css']).pipe(gulp.dest('./.sitedist/stylesheets'));
+    gulp.src(['./site/javascripts/*.js']).pipe(gulp.dest('./.sitedist/javascripts'));
+    gulp.src(['./dist/*.css']).pipe(gulp.dest('./.sitedist/stylesheets'));
+    gulp.src(['./site/images/**']).pipe(gulp.dest('./.sitedist/images'));
+    gulp.src(['./dist/*.js']).pipe(gulp.dest('./.sitedist/javascripts'));
+    gulp.src(['./site/bower_components/highlightjs/**']).pipe(gulp.dest('./.sitedist/javascripts/highlight.js'));
+    gulp.src(['./node_modules/jquery/dist/jquery.min.js']).pipe(gulp.dest('./.sitedist/javascripts'));
+    gulp.src(['./node_modules/bootstrap/dist/js/bootstrap.min.js']).pipe(gulp.dest('./.sitedist/javascripts'));
+    gulp.src(['./node_modules/bootstrap/dist/css/bootstrap.min.css']).pipe(gulp.dest('./.sitedist/stylesheets'));
     return gulp.src('site/pages/*.html')
         .pipe(nunjucksRender({
             path: ['site/templates/', 'dist/md/']
         }))
-        .pipe(gulp.dest('dist/pages'));
+        .pipe(gulp.dest('.sitedist'));
 });
 
 gulp.task('pages-deploy', function() {
-  return gulp.src('./dist/pages/**/*')
+  return gulp.src('./.sitedist/**/*')
     .pipe(ghPages());
 });
 
 
-gulp.task('md', function () {
-    return gulp.src('README.md')
-        .pipe(markdown())
-        .pipe(gulp.dest('dist/md/'));
-});
+//gulp.task('md', function () {
+//    return gulp.src('README.md')
+//        .pipe(markdown())
+//        .pipe(gulp.dest('dist/md/'));
+//});
 
 gulp.task('bump', function(){
   gulp.src(['./bower.json', './package.json'])
@@ -109,11 +110,11 @@ gulp.task('release', function() {
 });
 
 gulp.task('zip', function() {
-    return gulp.src('./dist/package/**')
+    return gulp.src('./.package/**')
         .pipe(zip('lazeemenu.zip'))
         .pipe(gulp.dest('dist'));
 });
 
 gulp.task('default', function(callback) {
-    runSequence('clean', 'sass', 'minify-css', 'lint', 'copy', 'compress', 'md', 'pages');
+    runSequence('clean', 'sass', 'minify-css', 'lint', 'compress', 'pages', 'package');
 });

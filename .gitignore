@@ -11,8 +11,10 @@ coverage
 build/Release
 node_modules
 .npm
+.package
 .node_repl_history
 dist
+.sitedist
 .idea
 .sass-cache
 .publish

@@ -37,5 +37,6 @@
   },
   "scripts": {
     "test": "gulp"
-  }
+  },
+  "keywords" : ["jquery-plugin", "ecosystem:jquery", "menu", "navigation", "sidebar"]
 }
