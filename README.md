@@ -4,7 +4,13 @@ LazeeMenu is a JQuery plugin that turns a nested unordered list of links into a 
 
 ![demo](https://raw.githubusercontent.com/lazee/lazeemenu/master/site/images/demo.gif)
 
-[Homepage - Demo](http://lazee.github.io/lazeemenu/) | [Download](https://github.com/lazee/lazeemenu/releases)
+[Homepage - Demo](http://lazee.github.io/lazeemenu/) | [Download ZIP](https://github.com/lazee/lazeemenu/releases)
+
+## Install with NPM
+
+```
+npm install lazeemenu
+```
 
 ## Getting started
 
