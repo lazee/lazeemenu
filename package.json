@@ -1,6 +1,6 @@
 {
   "name": "lazeemenu",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "homepage": "http://lazee.github.io/lazeemenu/",
   "description": "Multi-level sidebar menu - JQuery plugin",
   "dependencies": {

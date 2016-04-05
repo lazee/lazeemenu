@@ -30,7 +30,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('minify-css', function() {
-    gulp.src('./.package/lazeemenu/*.css')
+    gulp.src('./dist/*.css')
         .pipe(cssmin())
         .pipe(rename({
             suffix: '.min'
