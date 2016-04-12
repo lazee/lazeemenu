@@ -1,5 +1,7 @@
 # LazeeMenu
 
+[![Join the chat at https://gitter.im/lazee/lazeemenu](https://badges.gitter.im/lazee/lazeemenu.svg)](https://gitter.im/lazee/lazeemenu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 LazeeMenu is a JQuery plugin that turns a nested unordered list of links into a vertical multi-level navigation menu. It is visually inspired by the menu on Github's reference pages, but with support for an additional level. It support both links and standard text in the expandable menu items.
 
 ![demo](https://raw.githubusercontent.com/lazee/lazeemenu/master/site/images/demo.gif)
