@@ -1,5 +1,8 @@
 # LazeeMenu
 
+NOTE: This project was mostly about having a package up in NPM from a devops perspective, but it actually got some users around the world. But now its time to archive it for good.
+
+
 LazeeMenu is a JQuery plugin that turns a nested unordered list of links into a vertical multi-level navigation menu. It is visually inspired by the menu on Github's reference pages, but with support for an additional level. It support both links and standard text in the expandable menu items.
 
 ![demo](https://raw.githubusercontent.com/lazee/lazeemenu/master/site/images/demo.gif)
