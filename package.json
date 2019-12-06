@@ -4,7 +4,7 @@
   "homepage": "http://lazee.github.io/lazeemenu/",
   "description": "Multi-level sidebar menu - JQuery plugin",
   "dependencies": {
-    "jquery": "^2.2.0"
+    "jquery": "^3.4.1"
   },
   "devDependencies": {
     "bootstrap": "^3.3.6",
